@@ -2,28 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="092853f1-e4a0-4bdc-893e-68a0c41cd931" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/img/another-background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/img/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/img/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/img/news-background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/img/no-user-image-big.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/img/no-user-image.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/images/another-background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/images/background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/images/news-background.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/main.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/main.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/main.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/main.min.js.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/news.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/news.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/controllers/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/controllers/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/models/db.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/models/db.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/routes/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +45,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="1775" />
+          <entry key="js" value="1780" />
           <entry key="json" value="45" />
           <entry key="map" value="7" />
           <entry key="md" value="19" />
@@ -75,7 +54,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="45" />
-          <entry key="JavaScript" value="1775" />
+          <entry key="JavaScript" value="1780" />
           <entry key="Markdown" value="19" />
           <entry key="SourceMap" value="7" />
         </counts>
@@ -115,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+            <state relative-caret-position="426">
+              <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -133,8 +112,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server/models/db.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1539">
-              <caret line="114" column="8" lean-forward="true" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
+            <state relative-caret-position="120">
+              <caret line="110" column="61" selection-start-line="110" selection-start-column="61" selection-end-line="110" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -202,6 +181,7 @@
         <option value="$PROJECT_DIR$/server/controllers/user.js" />
         <option value="$PROJECT_DIR$/server/routes/index.js" />
         <option value="$PROJECT_DIR$/server/controllers/news.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/server/models/db.js" />
       </list>
     </option>
@@ -247,12 +227,6 @@
               <item name="loftsystem_dev" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="loftsystem_dev" type="b2602c69:ProjectViewProjectNode" />
-              <item name="loftsystem_dev" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -295,16 +269,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1536091812433</updated>
-      <workItem from="1536091815535" duration="59020000" />
+      <workItem from="1536091815535" duration="59467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59020000" />
+    <option name="totallyTimeSpent" value="59467000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="10" y="84" width="1824" height="1021" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17283951" />
@@ -313,7 +286,7 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.22782037" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.30558598" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
@@ -512,13 +485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
@@ -550,13 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/models/schema.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="51" column="4" lean-forward="true" selection-start-line="51" selection-start-column="4" selection-end-line="55" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/controllers/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -578,10 +537,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="39" column="13" lean-forward="true" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/models/schema.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="51" column="4" lean-forward="true" selection-start-line="51" selection-start-column="4" selection-end-line="55" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/models/db.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1539">
-          <caret line="114" column="8" lean-forward="true" selection-start-line="114" selection-start-column="8" selection-end-line="114" selection-end-column="8" />
+        <state relative-caret-position="120">
+          <caret line="110" column="61" selection-start-line="110" selection-start-column="61" selection-end-line="110" selection-end-column="61" />
         </state>
       </provider>
     </entry>

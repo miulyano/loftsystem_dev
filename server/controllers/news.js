@@ -32,7 +32,7 @@ module.exports.newNews = function (req, res) {
                         })
                 })
                 .catch((err) => {
-                    res.status(400).json({error: 'Not'});
+                    res.status(400).json({error: err.message});
                 })
         })
         .catch((err) => {

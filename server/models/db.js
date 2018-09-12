@@ -90,14 +90,17 @@ module.exports.getNews = function () {
 };
 
 module.exports.newNews = (data, user) => {
-    const article = new schemaNews({
+    if (isNotValidNews(data)) {
+        return Promise.reject(new Error('Заполните текст и тему новости перед добавлением!'))
+    }
+    const New = new schemaNews({
         id: uuidv1(),
         text: data.text || '',
         theme: data.theme || '',
         date:  data.date || '',
         user: user
     });
-    article.save();
+    New.save();
     return schemaUsers.find();
 };
 
