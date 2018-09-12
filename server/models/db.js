@@ -19,7 +19,7 @@ const isNotValidNews = data => {
 };
 
 module.exports.getUsers = function () {
-    return schemaUsers.find()
+    return schemaUsers.find({})
 };
 
 module.exports.saveNewUser = function (data) {
@@ -49,15 +49,15 @@ module.exports.updateUser = function (data, user, paramsId) {
     User.middleName = data.middleName ? data.middleName : user.middleName;
     User.image = data.image ? data.image : user.image;
     User.password = data.password ? data.password : user.password;
-    return schemaUsers.findByIdAndUpdate ({
-        '_id': paramsId
+    return schemaUsers.findOneAndUpdate ({
+        id: data.id
     }, {
         $set: User
     }, {new: true})
 };
 
 module.exports.deleteUser = function (paramsId) {
-    return schemaUsers.findByIdAndRemove({'_id': paramsId})
+    return schemaUsers.findOneAndRemove({id: paramsId})
 };
 
 module.exports.updateUserAccess = function (user) {
@@ -67,4 +67,52 @@ module.exports.updateUserAccess = function (user) {
         returnNewDocument: true,
         new: true
     })
+};
+
+module.exports.updateUserPermission = (user, data) => {
+    let newPermission = user.permission;
+    for (key1 in data.permission) {
+        let changedAttr = newPermission[key1];
+        for (key2 in data.permission[key1]) {
+            changedAttr = newPermission[key1][key2];
+            newPermission[key1][key2] = !newPermission[key1][key2];
+        }
+    }
+    return schemaUsers.findOneAndUpdate({id: user.id}, {permission: newPermission}, {
+        multi: true,
+        returnNewDocument: true,
+        new: true
+    })
+};
+
+module.exports.getNews = function () {
+    return schemaNews.find({})
+};
+
+module.exports.newNews = (data, user) => {
+    const article = new schemaNews({
+        id: uuidv1(),
+        text: data.text || '',
+        theme: data.theme || '',
+        date:  data.date || '',
+        user: user
+    });
+    article.save();
+    return schemaUsers.find();
+};
+
+module.exports.deleteNews = function (paramsId) {
+    return schemaNews.findOneAndRemove({id: paramsId});
+};
+
+module.exports.updateNews = function (data, news, paramsId) {
+    const News = {};
+    News.text = data.text ? data.text : news.text;
+    News.theme = data.theme ? data.theme : news.theme;
+    News.date = data.date ? data.date : news.date;
+    return schemaNews.findOneAndUpdate ({
+        id: paramsId
+    }, {
+        $set: News
+    }, {new: true})
 };

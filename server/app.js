@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const fs = require('fs');
 
 const app = express();
 require('./models');
@@ -10,10 +11,11 @@ require('./models');
 app.use(bodyParser.urlencoded({extended: false}));
 // parse application/json
 app.use(bodyParser.json());
+app.use(bodyParser.text());
 
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', require('./routes'));
 
 app.use((req, res, next) => {
