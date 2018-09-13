@@ -4,8 +4,10 @@ const formidable = require('formidable');
 const schema = require('../models/schema');
 const path = require('path');
 const fs = require('fs');
+const passport = require('passport');
 
 const schemaUsers = schema.User;
+const schemaNews = schema.News;
 
 const createHash = passwordLibs.createHash;
 const isValidPassword = passwordLibs.isValidPassword;
@@ -19,7 +21,20 @@ module.exports.login = function (req, res) {
                     if(bodyObj.remembered) {
                         res.cookie('access_token', user.access_token,{maxAge: 360000000});
                     }
-                    res.status(200).json(user);
+                    // passport.authenticate('loginUsers', (err, user) => {
+                    //     if (err) {
+                    //         return next(err);
+                    //     }
+                    //     if (!user) {
+                    //         return res.json({status: 'Укажите правильный логин и пароль!'})
+                    //     }
+                    //     req.logIn(user, function (err) {
+                    //         if (err) {
+                    //             return next(err);
+                    //         }
+                    //     });
+                        res.status(200).json(user);
+                    //})(req, res);
                 });
             } else {
                 res.status(400).json({error: 'undefined user'});
@@ -94,13 +109,24 @@ module.exports.updateUser = function (req, res) {
                     .then((results) => {
                         if (results) {
                             res.json(results);
+                            return results;
                         } else {
                             res.status(400).json({error: 'Пользователь не найден'});
                         }
                     })
-                    .catch((err) => {
-                        res.status(400).json({error: err.message});
-                    })
+                    .then((userObj) => {
+                        schemaNews.updateMany(
+                            {userId: userObj.id},
+                            { $set: {user: userObj}},
+                            function(err, result) {
+                                if(err) {
+                                    res.status(400).json({error: err.message});
+                                }
+                            })
+                        })
+                        .catch((err) => {
+                            res.status(400).json({error: err.message});
+                        })
             } else {
                 res.status(400).json({error: 'undefined user'});
             }

@@ -15,7 +15,8 @@ const isNotValidUser = data => {
 
 const isNotValidNews = data => {
     let isText = !!data.text;
-    return !isText;
+    let isTheme = !!data.theme;
+    return !isText || !isTheme;
 };
 
 module.exports.getUsers = function () {
@@ -44,9 +45,9 @@ module.exports.saveNewUser = function (data) {
 
 module.exports.updateUser = function (data, user, paramsId) {
     const User = {};
-    User.surName = data.surName ? data.surName : user.surName;
-    User.firstName = data.firstName ? data.firstName : user.firstName;
-    User.middleName = data.middleName ? data.middleName : user.middleName;
+    User.surName = data.surName ||  data.surName === ''? data.surName : user.surName;
+    User.firstName = data.firstName || data.firstName === '' ? data.firstName : user.firstName;
+    User.middleName = data.middleName || data.middleName === '' ? data.middleName : user.middleName;
     User.image = data.image ? data.image : user.image;
     User.password = data.password ? data.password : user.password;
     return schemaUsers.findOneAndUpdate ({
@@ -95,6 +96,7 @@ module.exports.newNews = (data, user) => {
     }
     const New = new schemaNews({
         id: uuidv1(),
+        userId: data.userId,
         text: data.text || '',
         theme: data.theme || '',
         date:  data.date || '',
@@ -113,6 +115,7 @@ module.exports.updateNews = function (data, news, paramsId) {
     News.text = data.text ? data.text : news.text;
     News.theme = data.theme ? data.theme : news.theme;
     News.date = data.date ? data.date : news.date;
+    News.user = data.user ? data.user : news.user;
     return schemaNews.findOneAndUpdate ({
         id: paramsId
     }, {

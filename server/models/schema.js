@@ -50,6 +50,7 @@ const userScheme = new Schema ({
 // data newsScheme types
 const newsScheme = new Schema ({
     id: types.id,
+    userId: types.text,
     text: types.longtext,
     theme: types.text,
     date: types.text,
