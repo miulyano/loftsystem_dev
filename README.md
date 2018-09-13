@@ -10,7 +10,11 @@ cd loftsystem_dev.git
 
 npm i
 
-*run the database MongoDB and ...*
+for MacOS:
+   brew install mongodb
+   npm run dev
 
-npm start
+for Win:
+  * run local mongodb *
+  nodemon ./server/app.js * or * node ./server/app.js
 ````
