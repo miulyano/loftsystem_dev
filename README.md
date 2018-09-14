@@ -7,7 +7,7 @@
 
 ```shell
 $ git clone https://github.com/morecodemore/loftsystem_dev.git
-$ cd loftsystem_dev.git
+$ cd loftsystem_dev
 $ npm i
 $ npm test * for start test *
 ```
