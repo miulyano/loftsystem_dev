@@ -176,15 +176,15 @@ module.exports.saveUserImage = function (req, res) {
     schemaUsers.findOne({id: req.params.id})
         .then(user => {
             userFilePath = path.join(process.cwd(),'public', user.image);
-            uploadPath = path.join(process.cwd(), 'public', 'upload');
+            uploadPath = path.join('public', 'upload');
             form.parse(req, (err, fields, files) => {
                 if (err) {
                     return next(err);
                 }
 
-                const filePath = files[req.params.id].path;
+                const filePath = files[req.params.id]['path'];
                 const uploadDir = 'upload';
-                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id].name);
+                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id]['name']);
 
                 if (!fs.existsSync(uploadPath)) {
                     fs.mkdirSync(uploadPath)
@@ -202,7 +202,7 @@ module.exports.saveUserImage = function (req, res) {
                             return (err);
                         });
                     }
-                    res.json({path: path.join(uploadDir, files[req.params.id].name)});
+                    res.json({path: path.join(uploadDir, files[req.params.id]['name'])});
                 });
             });
         })
