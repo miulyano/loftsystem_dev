@@ -5,25 +5,36 @@ const schema = require('../models/schema');
 const path = require('path');
 const fs = require('fs');
 
+// start of use mongoose DB SCHEME
 const schemaUsers = schema.User;
 const schemaNews = schema.News;
 
+// password operations
 const createHash = passwordLibs.createHash;
 const isValidPassword = passwordLibs.isValidPassword;
 
+// controllers for POST request /api/login
 module.exports.login = function (req, res) {
     let bodyObj = JSON.parse(req.body);
     schemaUsers.findOne({username: bodyObj.username})
         .then(user => {
             if (user && isValidPassword(user.password, bodyObj.password)) {
+<<<<<<< HEAD
               db.updateUserAccess(user).then(user => {
                   if(bodyObj.remembered) {
                       res.cookie('access_token', user.access_token,{maxAge: 360000000});
                   }
                   res.status(200).json(user);
+=======
+                db.updateUserAccess(user).then(user => {
+                    if(bodyObj.remembered) {
+                        res.cookie('access_token', user.access_token,{maxAge: 360000000});
+                    }
+                        res.status(200).json(user);
+>>>>>>> e7f4cb78cacbbb2099fa54d3176483d92459ce10
                 });
             } else {
-                res.status(400).json({error: 'undefined user'});
+                res.status(400).json({error: 'Пользователь не найден'});
             }
         })
         .catch(() => {
@@ -31,6 +42,9 @@ module.exports.login = function (req, res) {
         });
 };
 
+// controllers for POST auto request /api/authFromToken
+// replaces the old token with a new one
+// for authentication
 module.exports.authFromToken = function (req, res) {
     const tokenObj = JSON.parse(req.body);
     schemaUsers.findOne({access_token: tokenObj.access_token})
@@ -46,6 +60,7 @@ module.exports.authFromToken = function (req, res) {
         });
 };
 
+// controllers for GET request /api/getUsers
 module.exports.getUsers = function (req, res) {
     db.getUsers()
         .then((results) => {
@@ -56,6 +71,7 @@ module.exports.getUsers = function (req, res) {
         })
 };
 
+// controllers for POST request /api/saveNewUser
 module.exports.saveNewUser = function (req, res) {
     const bodyObj = JSON.parse(req.body);
     bodyObj.password = createHash(bodyObj.password);
@@ -79,6 +95,7 @@ module.exports.saveNewUser = function (req, res) {
         });
 };
 
+// controllers for PUT request /api/updateUser/:id
 module.exports.updateUser = function (req, res) {
     const bodyObj = JSON.parse(req.body);
     schemaUsers.findOne({id: bodyObj.id})
@@ -122,6 +139,7 @@ module.exports.updateUser = function (req, res) {
         });
 };
 
+// controllers for DELETE request /api/deleteUser/:id
 module.exports.deleteUser = function (req, res) {
     db.deleteUser(req.params.id)
         .then((results) => {
@@ -136,6 +154,7 @@ module.exports.deleteUser = function (req, res) {
         })
 };
 
+// controllers for PUT request /api/updateUserPermission/:id
 module.exports.updateUserPermission = function (req, res) {
     const bodyObj = JSON.parse(req.body);
 
@@ -159,6 +178,7 @@ module.exports.updateUserPermission = function (req, res) {
         });
 };
 
+// controllers for POST request /api/saveUserImage/:id
 module.exports.saveUserImage = function (req, res) {
     const form = new formidable.IncomingForm();
     let userFilePath;
@@ -172,7 +192,7 @@ module.exports.saveUserImage = function (req, res) {
 
                 const filePath = files[req.params.id].path;
                 const uploadDir = 'upload';
-                const savedFilePath = path.join('public', uploadDir, files[req.params.id].name);
+                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id].name);
 
                 if (!fs.existsSync('./public/upload')) {
                     fs.mkdirSync('./public/upload')

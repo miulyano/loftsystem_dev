@@ -1,9 +1,11 @@
 const db = require('../models/db');
 const schema = require('../models/schema');
 
+// mongoose DB SCHEME
 const schemaUsers = schema.User;
 const schemaNews = schema.News;
 
+// controllers for GET request /api/getNews
 module.exports.getNews = function (req, res) {
     db.getNews().then((results) => {
         res.json(results);
@@ -13,6 +15,7 @@ module.exports.getNews = function (req, res) {
     })
 };
 
+// controllers for POST request /api/newNews
 module.exports.newNews = function (req, res) {
     const bodyObj = JSON.parse(req.body);
     schemaUsers.findOne({id: bodyObj.userId})
@@ -35,6 +38,7 @@ module.exports.newNews = function (req, res) {
         });
 };
 
+// controllers for DELETE request /api/deleteNews/:id
 module.exports.deleteNews = function (req, res) {
     db.deleteNews(req.params.id)
         .then((results) => {
@@ -54,6 +58,7 @@ module.exports.deleteNews = function (req, res) {
         })
 };
 
+// controllers for PUT request /api/updateNews/:id
 module.exports.updateNews = function (req, res) {
     const bodyObj = JSON.parse(req.body);
     schemaNews.findOne({id: req.params.id})
