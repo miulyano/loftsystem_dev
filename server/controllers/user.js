@@ -184,7 +184,7 @@ module.exports.saveUserImage = function (req, res) {
 
                 const filePath = files[req.params.id].path;
                 const uploadDir = 'upload';
-                const savedFilePath = path.join('public', uploadDir, files[req.params.id].name);
+                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id].name);
 
                 if (!fs.existsSync('./public/upload')) {
                     fs.mkdirSync('./public/upload')
