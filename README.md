@@ -23,4 +23,5 @@ $ npm start * for production mode *
 ```shell
 * run local mongodb *
 $ node_modules/.bin/nodemon ./server/app.js
+$ npm start * for production mode *
 ```
