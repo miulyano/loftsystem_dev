@@ -1,13 +1,8 @@
 const db = require('../models/db');
-const passwordLibs = require('../libs/passwordBcrypt');
-const formidable = require('formidable');
 const schema = require('../models/schema');
-const path = require('path');
-const fs = require('fs');
 
 const schemaUsers = schema.User;
 const schemaNews = schema.News;
-const schemaChat = schema.Chat;
 
 module.exports.getNews = function (req, res) {
     db.getNews().then((results) => {
@@ -65,12 +60,13 @@ module.exports.updateNews = function (req, res) {
         .then( news => {
             db.updateNews(bodyObj, news, req.params.id)
                 .then(() => {
-                    db.getNews().then((results) => {
-                        res.json(results);
-                    })
-                        .catch((err) => {
-                            res.status(400).json({error: err.message});
-                        })
+                    db.getNews()
+                      .then((results) => {
+                          res.json(results);
+                      })
+                      .catch((err) => {
+                          res.status(400).json({error: err.message});
+                      })
                 })
         });
 };

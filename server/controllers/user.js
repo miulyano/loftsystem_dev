@@ -4,7 +4,6 @@ const formidable = require('formidable');
 const schema = require('../models/schema');
 const path = require('path');
 const fs = require('fs');
-const passport = require('passport');
 
 const schemaUsers = schema.User;
 const schemaNews = schema.News;
@@ -17,24 +16,11 @@ module.exports.login = function (req, res) {
     schemaUsers.findOne({username: bodyObj.username})
         .then(user => {
             if (user && isValidPassword(user.password, bodyObj.password)) {
-                db.updateUserAccess(user).then(user => {
-                    if(bodyObj.remembered) {
-                        res.cookie('access_token', user.access_token,{maxAge: 360000000});
-                    }
-                    // passport.authenticate('loginUsers', (err, user) => {
-                    //     if (err) {
-                    //         return next(err);
-                    //     }
-                    //     if (!user) {
-                    //         return res.json({status: 'Укажите правильный логин и пароль!'})
-                    //     }
-                    //     req.logIn(user, function (err) {
-                    //         if (err) {
-                    //             return next(err);
-                    //         }
-                    //     });
-                        res.status(200).json(user);
-                    //})(req, res);
+              db.updateUserAccess(user).then(user => {
+                  if(bodyObj.remembered) {
+                      res.cookie('access_token', user.access_token,{maxAge: 360000000});
+                  }
+                  res.status(200).json(user);
                 });
             } else {
                 res.status(400).json({error: 'undefined user'});
@@ -204,7 +190,7 @@ module.exports.saveUserImage = function (req, res) {
                             return (err);
                         });
                     }
-                    return res.json({path: path.join(uploadDir, files[req.params.id].name)});
+                    res.json({path: path.join(uploadDir, files[req.params.id].name)});
                 });
             });
         })

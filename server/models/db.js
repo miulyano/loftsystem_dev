@@ -1,10 +1,8 @@
-const mongoose = require("mongoose");
 const uuidv1 = require('uuid/v1');
 const uuidv4 = require('uuid/v4');
 const schema = require('./schema');
 const schemaUsers = schema.User;
 const schemaNews = schema.News;
-const schemaChat = schema.Chat;
 
 
 const isNotValidUser = data => {

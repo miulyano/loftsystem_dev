@@ -4,7 +4,7 @@ mongoose.Promise = global.Promise;
 let url = 'mongodb://localhost:27017/loftsystem_test';
 
 // connect database
-mongoose.connect(url);
+mongoose.connect(url, { useNewUrlParser: true } );
 
 mongoose
     .connection
