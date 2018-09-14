@@ -4,6 +4,7 @@ node_js:
 
 script:
   - npm test
+  - npm start
 
 deploy:
   provider: heroku
