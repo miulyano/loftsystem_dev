@@ -171,20 +171,75 @@ module.exports.updateUserPermission = function (req, res) {
 
 // controllers for POST request /api/saveUserImage/:id
 module.exports.saveUserImage = function (req, res) {
-    const form = new formidable.IncomingForm();
+
+
+  let id = req.params.id;
+  let form = new formidable.IncomingForm();
+  let upload = 'public/upload';
+  let fileName;
+
+  form.uploadDir = path.join(process.cwd(), upload);
+  let pathUpload = form.uploadDir;
+  if (!fs.existsSync(pathUpload)) {
+    fs.mkdirSync(pathUpload);
+  }
+  form.parse(req, function (err, fields, files) {
+    if (err) {
+      return res.json({ msg: 'Проект не загружен Ошибка!', status: 'Error' });
+    }
+
+    if (files[id]['name'] === '' || files[id]['size'] === 0) {
+      return res.json({ msg: 'Проект не загружен Ошибка!', status: 'Error' });
+    }
+
+    fileName = path.join(upload, files[id]['name']);
+    fileNamedb = path.join('upload', files[id]['name']);
+
+    fs.rename(files[id]['path'], fileName, function (err) {
+      if (err) {
+        console.error(err);
+        fs.unlink(fileName);
+        fs.rename(files[id]['path'], fileName);
+      }
+      let dir = fileName.substr(6);
+      //console.log(dir);
+
+      schemaUsers.findOneAndUpdate(
+        { id: id },
+        { image: fileNamedb },
+        { new: true }
+      ).then(item => {
+        if (item) {
+          res.json({ path: fileNamedb });
+        } else {
+          res.status(404).json({ err: 'User not save' });
+        }
+
+      }).catch(e => {
+        console.log(e);
+      });
+    });
+  });
+
+
+
+
+    /*const form = new formidable.IncomingForm();
     let userFilePath;
     schemaUsers.findOne({id: req.params.id})
         .then(user => {
             userFilePath = path.join(process.cwd(),'public', user.image);
-            uploadPath = path.join('public', 'upload');
+            uploadPath = path.join(process.cwd(), 'public', 'upload');
             form.parse(req, (err, fields, files) => {
+                console.log(fields, files);
                 if (err) {
                     return next(err);
                 }
 
-                const filePath = files[req.params.id]['path'];
+                const filePath = files[req.params.id].path;
+                console.log();
                 const uploadDir = 'upload';
-                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id]['name']);
+                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id].name);
 
                 if (!fs.existsSync(uploadPath)) {
                     fs.mkdirSync(uploadPath)
@@ -202,11 +257,11 @@ module.exports.saveUserImage = function (req, res) {
                             return (err);
                         });
                     }
-                    res.json({path: path.join(uploadDir, files[req.params.id]['name'])});
+                    res.json({path: path.join(uploadDir, files[req.params.id].name)});
                 });
             });
         })
         .catch((err) => {
             res.status(400).json({err: err.message});
-        });
+        });*/
 };
