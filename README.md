@@ -3,7 +3,7 @@
 
 ### Copy and start project
 
-````
+```bash
 git clone https://github.com/morecodemore/loftsystem_dev.git
 
 cd loftsystem_dev.git
@@ -17,4 +17,4 @@ for MacOS:
 for Win:
   * run local mongodb *
   nodemon ./server/app.js * or * node ./server/app.js
-````
+```
