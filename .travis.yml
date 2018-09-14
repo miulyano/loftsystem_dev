@@ -11,6 +11,6 @@ deploy:
     secure: $he
   strategy: git
   app:
-    master: lofsystem_dev
+    master: lofsystem
   run:
     - restart
