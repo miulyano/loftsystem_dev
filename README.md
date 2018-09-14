@@ -1,8 +1,9 @@
 # loftsystem_dev
->**loftsystem_dev** - graduation project [intensive by Node.js](https://loftsystem.herokuapp.com)
+>**loftsystem_dev** - graduation project [intensive by Node.js](https://loftschool.com/course/nodejs/)
 
 ![LoftSystem](public/assets/img/logo.png)
 
+[Demo](https://loftsystem.herokuapp.com)
 ### Copy & Start project
 
 ```shell
