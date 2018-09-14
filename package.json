@@ -4,9 +4,14 @@
   "description": "loftsystem_dev - graduation project intensive by node.js",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "dev": "NODE_ENV=development mongod --config /usr/local/etc/mongod.conf & node_modules/.bin/nodemon ./server/app.js",
     "start": "NODE_ENV=production node ./server/app.js",
     "test": "mocha --exit"
+=======
+    "dev": "mongod --config /usr/local/etc/mongod.conf & nodemon ./server/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> dec34d53d86edf9287b381b17a898921d229dd53
   },
   "repository": {
     "type": "git",
