@@ -5,9 +5,7 @@
 
 ```shell
 git clone https://github.com/morecodemore/loftsystem_dev.git
-
 cd loftsystem_dev.git
-
 npm i
 ```
 
