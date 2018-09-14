@@ -9,6 +9,7 @@ git clone https://github.com/morecodemore/loftsystem_dev.git
 cd loftsystem_dev.git
 
 npm i
+```
 
 for MacOS:
    brew install mongodb
