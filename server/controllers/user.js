@@ -19,11 +19,11 @@ module.exports.login = function (req, res) {
     schemaUsers.findOne({username: bodyObj.username})
         .then(user => {
             if (user && isValidPassword(user.password, bodyObj.password)) {
-                db.updateUserAccess(user).then(user => {
-                    if(bodyObj.remembered) {
-                        res.cookie('access_token', user.access_token,{maxAge: 360000000});
-                    }
-                        res.status(200).json(user);
+              db.updateUserAccess(user).then(user => {
+                  if(bodyObj.remembered) {
+                      res.cookie('access_token', user.access_token,{maxAge: 360000000});
+                  }
+                  res.status(200).json(user);
                 });
             } else {
                 res.status(400).json({error: 'Пользователь не найден'});
@@ -102,17 +102,16 @@ module.exports.updateUser = function (req, res) {
                 }
                 db.updateUser(bodyObj, user)
                     .then((results) => {
-                        if (results) {
-                            res.json(results);
-                            return results;
-                        } else {
-                            res.status(400).json({error: 'Пользователь не найден'});
-                        }
+                      if (results) {
+                        res.json(results);
+                        return results;
+                      } else {
+                        res.status(400).json({error: 'Пользователь не найден'});
+                      }
                     })
                     .then((userObj) => {
                         schemaNews.updateMany(
-                            {userId: userObj.id},
-                            { $set: {user: userObj}},
+                            {userId: userObj.id}, { $set: {user: userObj}},
                             function(err, result) {
                                 if(err) {
                                     res.status(400).json({error: err.message});
@@ -172,41 +171,52 @@ module.exports.updateUserPermission = function (req, res) {
 
 // controllers for POST request /api/saveUserImage/:id
 module.exports.saveUserImage = function (req, res) {
-    const form = new formidable.IncomingForm();
-    let userFilePath;
-    schemaUsers.findOne({id: req.params.id})
-        .then(user => {
-            userFilePath = path.join('./public', user.image);
-            form.parse(req, (err, fields, files) => {
-                if (err) {
-                    return next(err);
-                }
+  let id = req.params.id;
+  let form = new formidable.IncomingForm();
+  let upload = 'public/upload';
+  let fileName;
 
-                const filePath = files[req.params.id].path;
-                const uploadDir = 'upload';
-                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id].name);
+  form.uploadDir = path.join(process.cwd(), upload);
+  let pathUpload = form.uploadDir;
 
-                if (!fs.existsSync('./public/upload')) {
-                    fs.mkdirSync('./public/upload')
-                }
+  if (!fs.existsSync(pathUpload)) {
+    fs.mkdirSync(pathUpload);
+  }
 
-                fs.rename(filePath, savedFilePath, (err) => {
-                    if (err) {
-                        fs.unlink(savedFilePath, (err) => {
-                            return (err);
-                        });
-                        return (err);
-                    }
-                    if (savedFilePath !== userFilePath) {
-                        fs.unlink(userFilePath, (err) => {
-                            return (err);
-                        });
-                    }
-                    return res.json({path: path.join(uploadDir, files[req.params.id].name)});
-                });
-            });
-        })
-        .catch((err) => {
-            res.status(400).json({err: err.message});
-        });
+  form.parse(req, function (err, fields, files) {
+    if (err) {
+      return res.status('Error').json({ error: 'Ошибка загрузки картинки, попробуйте еще раз!' });
+    }
+
+    if (files[id]['name'] === '' || files[id]['size'] === 0) {
+      return res.status('Error').json({ error: 'Ошибка загрузки картинки, попробуйте еще раз!' });
+    }
+
+    fileName = path.join(upload, files[id]['name']);
+    fileNamedb = path.join('upload', files[id]['name']);
+
+    fs.rename(files[id]['path'], fileName, function (err) {
+      if (err) {
+        console.error(err);
+        fs.unlink(fileName);
+        fs.rename(files[id]['path'], fileName);
+      }
+
+      schemaUsers.findOneAndUpdate(
+        { id: id },
+        { image: fileNamedb },
+        { new: true }
+      ).then(item => {
+        if (item) {
+          res.json({ path: fileNamedb });
+        } else {
+          res.status(404).json({ error: 'Пользователь не найден' });
+        }
+
+      }).catch(e => {
+        console.log(e);
+      });
+    });
+  });
+
 };

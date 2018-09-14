@@ -65,12 +65,13 @@ module.exports.updateNews = function (req, res) {
         .then( news => {
             db.updateNews(bodyObj, news, req.params.id)
                 .then(() => {
-                    db.getNews().then((results) => {
-                        res.json(results);
-                    })
-                        .catch((err) => {
-                            res.status(400).json({error: err.message});
-                        })
+                    db.getNews()
+                      .then((results) => {
+                          res.json(results);
+                      })
+                      .catch((err) => {
+                          res.status(400).json({error: err.message});
+                      })
                 })
         });
 };

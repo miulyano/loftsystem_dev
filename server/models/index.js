@@ -5,13 +5,12 @@ let url = process.env.NODE_ENV === 'production' ? 'mongodb://admin:admin1@ds1496
 
 // connect database
 mongoose.connect(url, { useNewUrlParser: true } );
-console.log(url);
 
 // event connected
 mongoose
     .connection
     .on('connected', () => {
-        console.log(`Mongoose connection open ${url}`);
+        console.log(`Mongoose connection open: ${url}`);
     });
 
 // event error

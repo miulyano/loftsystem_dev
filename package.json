@@ -6,14 +6,14 @@
   "scripts": {
     "dev": "NODE_ENV=development mongod --config /usr/local/etc/mongod.conf & node_modules/.bin/nodemon ./server/app.js",
     "start": "NODE_ENV=production node ./server/app.js",
-    "test": "mocha --exit"
+    "test": "NODE_ENV=production mocha --exit"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/morecodemore/loftsystem_dev.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["admin", "node", "node.js", "loftsystem", "loftschool", "project", "mongo", "mongoose", "express", "vue"],
+  "author": "morecodemore",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/morecodemore/loftsystem_dev/issues"

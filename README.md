@@ -1,9 +1,12 @@
+[![Build Status](https://travis-ci.org/morecodemore/loftsystem_dev.svg?branch=master)](https://travis-ci.org/morecodemore/loftsystem_dev)
 # loftsystem_dev
 >**loftsystem_dev** - graduation project [intensive by Node.js](https://loftschool.com/course/nodejs/)
 
 ![LoftSystem](public/assets/img/logo.png)
 
 [Demo](https://loftsystem.herokuapp.com)
+
+secret page from set permission - https://loftsystem.herokuapp.com/admin_panel
 ### Copy & Start project
 
 ```shell

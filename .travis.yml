@@ -11,6 +11,6 @@ deploy:
     secure: $he
   strategy: git
   app:
-    master: lofsystem
+    master: loftsystem
   run:
     - restart
