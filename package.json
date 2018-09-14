@@ -12,8 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/morecodemore/loftsystem_dev.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["admin", "node", "node.js", "loftsystem", "loftschool", "project", "mongo", "mongoose", "express", "vue"],
+  "author": "morecodemore",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/morecodemore/loftsystem_dev/issues"
