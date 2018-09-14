@@ -5,6 +5,8 @@
 ![LoftSystem](public/assets/img/logo.png)
 
 [Demo](https://loftsystem.herokuapp.com)
+
+secret page from set permission - https://loftsystem.herokuapp.com/admin_panel
 ### Copy & Start project
 
 ```shell
