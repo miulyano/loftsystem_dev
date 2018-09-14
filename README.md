@@ -1,16 +1,26 @@
 # loftsystem_dev
 >loftsystem_dev - graduation project intensive by node.js
 
-### Copy and start project
+![LoftSystem](public/assets/img/logo.png)
 
-````
-git clone https://github.com/morecodemore/loftsystem_dev.git
+### Copy & Start project
 
-cd loftsystem_dev.git
+```shell
+$ git clone https://github.com/morecodemore/loftsystem_dev.git
+$ cd loftsystem_dev.git
+$ npm i
+```
 
-npm i
+#### for MacOS:
+```shell
+$ brew install mongodb
+$ npm test * for start test *
+$ npm run dev * for development mode *
+$ npm start * for production mode *
+```
 
-*run the database MongoDB and ...*
-
-npm start
-````
+#### for Windows:
+```shell
+* run local mongodb *
+$ node_modules/.bin/nodemon ./server/app.js
+```

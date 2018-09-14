@@ -4,14 +4,16 @@ const formidable = require('formidable');
 const schema = require('../models/schema');
 const path = require('path');
 const fs = require('fs');
-const passport = require('passport');
 
+// start of use mongoose DB SCHEME
 const schemaUsers = schema.User;
 const schemaNews = schema.News;
 
+// password operations
 const createHash = passwordLibs.createHash;
 const isValidPassword = passwordLibs.isValidPassword;
 
+// controllers for POST request /api/login
 module.exports.login = function (req, res) {
     let bodyObj = JSON.parse(req.body);
     schemaUsers.findOne({username: bodyObj.username})
@@ -21,23 +23,10 @@ module.exports.login = function (req, res) {
                     if(bodyObj.remembered) {
                         res.cookie('access_token', user.access_token,{maxAge: 360000000});
                     }
-                    // passport.authenticate('loginUsers', (err, user) => {
-                    //     if (err) {
-                    //         return next(err);
-                    //     }
-                    //     if (!user) {
-                    //         return res.json({status: 'Укажите правильный логин и пароль!'})
-                    //     }
-                    //     req.logIn(user, function (err) {
-                    //         if (err) {
-                    //             return next(err);
-                    //         }
-                    //     });
                         res.status(200).json(user);
-                    //})(req, res);
                 });
             } else {
-                res.status(400).json({error: 'undefined user'});
+                res.status(400).json({error: 'Пользователь не найден'});
             }
         })
         .catch(() => {
@@ -45,6 +34,9 @@ module.exports.login = function (req, res) {
         });
 };
 
+// controllers for POST auto request /api/authFromToken
+// replaces the old token with a new one
+// for authentication
 module.exports.authFromToken = function (req, res) {
     const tokenObj = JSON.parse(req.body);
     schemaUsers.findOne({access_token: tokenObj.access_token})
@@ -60,6 +52,7 @@ module.exports.authFromToken = function (req, res) {
         });
 };
 
+// controllers for GET request /api/getUsers
 module.exports.getUsers = function (req, res) {
     db.getUsers()
         .then((results) => {
@@ -70,6 +63,7 @@ module.exports.getUsers = function (req, res) {
         })
 };
 
+// controllers for POST request /api/saveNewUser
 module.exports.saveNewUser = function (req, res) {
     const bodyObj = JSON.parse(req.body);
     bodyObj.password = createHash(bodyObj.password);
@@ -93,6 +87,7 @@ module.exports.saveNewUser = function (req, res) {
         });
 };
 
+// controllers for PUT request /api/updateUser/:id
 module.exports.updateUser = function (req, res) {
     const bodyObj = JSON.parse(req.body);
     schemaUsers.findOne({id: bodyObj.id})
@@ -136,6 +131,7 @@ module.exports.updateUser = function (req, res) {
         });
 };
 
+// controllers for DELETE request /api/deleteUser/:id
 module.exports.deleteUser = function (req, res) {
     db.deleteUser(req.params.id)
         .then((results) => {
@@ -150,6 +146,7 @@ module.exports.deleteUser = function (req, res) {
         })
 };
 
+// controllers for PUT request /api/updateUserPermission/:id
 module.exports.updateUserPermission = function (req, res) {
     const bodyObj = JSON.parse(req.body);
 
@@ -173,6 +170,7 @@ module.exports.updateUserPermission = function (req, res) {
         });
 };
 
+// controllers for POST request /api/saveUserImage/:id
 module.exports.saveUserImage = function (req, res) {
     const form = new formidable.IncomingForm();
     let userFilePath;
