@@ -4,19 +4,19 @@
 ### Copy & Start project
 
 ```shell
-git clone https://github.com/morecodemore/loftsystem_dev.git
-cd loftsystem_dev.git
-npm i
+$ git clone https://github.com/morecodemore/loftsystem_dev.git
+$ cd loftsystem_dev.git
+$ npm i
 ```
 
 #### for MacOS:
 ```shell
-brew install mongodb
-npm run dev
+$ brew install mongodb
+$ npm run dev
 ```
 
 #### for Win:
 ```shell
 * run local mongodb *
-nodemon ./server/app.js * or * node ./server/app.js
+$ nodemon ./server/app.js * or * $ node ./server/app.js
 ```
