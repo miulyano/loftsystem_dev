@@ -4,10 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 
-<<<<<<< HEAD
-=======
 // creating an application and connecting MODELS
->>>>>>> e7f4cb78cacbbb2099fa54d3176483d92459ce10
 const app = express();
 require('./models');
 
@@ -24,10 +21,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use('/', require('./routes'));
 
-<<<<<<< HEAD
-=======
 // error processing
->>>>>>> e7f4cb78cacbbb2099fa54d3176483d92459ce10
 app.use((req, res, next) => {
     res.status(404).json({err: `404\nNot found`});
 });

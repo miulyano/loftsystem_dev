@@ -30,7 +30,7 @@ module.exports.getUsers = function () {
 // SAVE new user in DB
 module.exports.saveNewUser = function (data) {
     if (isNotValidUser(data)) {
-        return Promise.reject(new Error('Data format is not correct'))
+        return Promise.reject(new Error('Введите логин и пароль, это обязательные поля!'))
     }
     const User = new schemaUsers ({
         access_token: uuidv1(),

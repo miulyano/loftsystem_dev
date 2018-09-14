@@ -19,19 +19,11 @@ module.exports.login = function (req, res) {
     schemaUsers.findOne({username: bodyObj.username})
         .then(user => {
             if (user && isValidPassword(user.password, bodyObj.password)) {
-<<<<<<< HEAD
               db.updateUserAccess(user).then(user => {
                   if(bodyObj.remembered) {
                       res.cookie('access_token', user.access_token,{maxAge: 360000000});
                   }
                   res.status(200).json(user);
-=======
-                db.updateUserAccess(user).then(user => {
-                    if(bodyObj.remembered) {
-                        res.cookie('access_token', user.access_token,{maxAge: 360000000});
-                    }
-                        res.status(200).json(user);
->>>>>>> e7f4cb78cacbbb2099fa54d3176483d92459ce10
                 });
             } else {
                 res.status(400).json({error: 'Пользователь не найден'});
@@ -110,17 +102,16 @@ module.exports.updateUser = function (req, res) {
                 }
                 db.updateUser(bodyObj, user)
                     .then((results) => {
-                        if (results) {
-                            res.json(results);
-                            return results;
-                        } else {
-                            res.status(400).json({error: 'Пользователь не найден'});
-                        }
+                      if (results) {
+                        res.json(results);
+                        return results;
+                      } else {
+                        res.status(400).json({error: 'Пользователь не найден'});
+                      }
                     })
                     .then((userObj) => {
                         schemaNews.updateMany(
-                            {userId: userObj.id},
-                            { $set: {user: userObj}},
+                            {userId: userObj.id}, { $set: {user: userObj}},
                             function(err, result) {
                                 if(err) {
                                     res.status(400).json({error: err.message});
@@ -185,6 +176,8 @@ module.exports.saveUserImage = function (req, res) {
     schemaUsers.findOne({id: req.params.id})
         .then(user => {
             userFilePath = path.join('./public', user.image);
+            uploadPath = path.join('./public', 'upload');
+            console.log(uploadPath);
             form.parse(req, (err, fields, files) => {
                 if (err) {
                     return next(err);
@@ -192,10 +185,10 @@ module.exports.saveUserImage = function (req, res) {
 
                 const filePath = files[req.params.id].path;
                 const uploadDir = 'upload';
-                const savedFilePath = path.join(process.cwd(), 'public', uploadDir, files[req.params.id].name);
+                const savedFilePath = path.join('public', uploadDir, files[req.params.id].name);
 
-                if (!fs.existsSync('./public/upload')) {
-                    fs.mkdirSync('./public/upload')
+                if (!fs.existsSync(uploadPath)) {
+                    fs.mkdirSync(uploadPath)
                 }
 
                 fs.rename(filePath, savedFilePath, (err) => {
