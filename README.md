@@ -31,7 +31,7 @@ $ node_modules/.bin/nodemon ./server/app.js
 $ npm start * for production mode *
 ```
 
-#### Used technologies
+### Used technologies
 
 >The project frontend was provided by the organizers of the intensive. Backend is written in **Node.js** using a database **MongoDB** with the following libraries:
 
@@ -41,6 +41,6 @@ $ npm start * for production mode *
 [**Nodemon**](https://nodemon.io) - *reload server, automatically*  
 [**Socket.IO**](https://socket.io) - *library that enables real-time, bidirectional and event-based communication between the browser and the server*  
 
-#### Technical task
+### Technical task
 
 [Here](https://bitbucket.org/krabaton/loft-homework-5)
