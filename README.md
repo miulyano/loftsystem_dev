@@ -35,11 +35,11 @@ $ npm start * for production mode *
 
 >The project frontend was provided by the organizers of the intensive. Backend is written in **Node.js** using a database **MongoDB** with the following libraries:
 
-[Express](http://expressjs.com) - Node.js web application framework..
-[Mocha](https://mochajs.org) - the fun, simple, flexible JavaScript test framework..
-[Mongoose](https://mongoosejs.com) - mongodb object modeling for node.js..
-[Nodemon](https://nodemon.io) - reload server, automatically..
-[Socket.IO](https://socket.io) - library that enables real-time, bidirectional and event-based communication between the browser and the server..
+[Express](http://expressjs.com) - Node.js web application framework . 
+[Mocha](https://mochajs.org) - the fun, simple, flexible JavaScript test framework . 
+[Mongoose](https://mongoosejs.com) - mongodb object modeling for node.js . 
+[Nodemon](https://nodemon.io) - reload server, automatically . 
+[Socket.IO](https://socket.io) - library that enables real-time, bidirectional and event-based communication between the browser and the server . 
 
 #### Technical task
 
