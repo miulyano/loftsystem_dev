@@ -39,7 +39,7 @@ $ npm start * for production mode *
 [**Mocha**](https://mochajs.org) - *the fun, simple, flexible JavaScript test framework*  
 [**Mongoose**](https://mongoosejs.com) - *mongodb object modeling for node.js*  
 [**Nodemon**](https://nodemon.io) - *reload server, automatically*  
-[**mLab**](https://www.mlab.com) - the leading Database-as-a-Service for MongoDB  
+[**mLab**](https://www.mlab.com) - *the leading Database-as-a-Service for MongoDB*  
 [**Socket.IO**](https://socket.io) - *library that enables real-time, bidirectional and event-based communication between the browser and the server*  
 
 ### Technical task
