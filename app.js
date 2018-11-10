@@ -18,7 +18,7 @@ app.use(bodyParser.text());
 app.use(cookieParser());
 
 // start of use STATIC DIR & ROUTES
-app.use(express.static(path.join(__dirname, './public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', require('./server/routes/index'));
 
 // error processing
