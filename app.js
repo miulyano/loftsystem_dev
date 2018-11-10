@@ -6,7 +6,7 @@ const helmet = require('helmet');
 
 // creating an application and connecting MODELS
 const app = express();
-require('./models');
+require('./server/models/index');
 
 // setting various HTTP headers
 app.use(helmet());
@@ -18,8 +18,8 @@ app.use(bodyParser.text());
 app.use(cookieParser());
 
 // start of use STATIC DIR & ROUTES
-app.use(express.static(path.join(__dirname, '../public')));
-app.use('/', require('./routes'));
+app.use(express.static(path.join(__dirname, './public')));
+app.use('/', require('./server/routes/index'));
 
 // error processing
 app.use((req, res, next) => {
@@ -39,7 +39,7 @@ if (require.main === module) {
 
     // WEBSOCKET startup
     const io = require('socket.io').listen(server);
-    const chat = require('./libs/chat');
+    const chat = require('./server/libs/chat');
     chat(io);
 
 } else {

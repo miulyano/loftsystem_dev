@@ -1,6 +1,6 @@
 const {expect} = require('chai');
 const request = require("request");
-const server = require('../server/app');
+const server = require('../app');
 
 describe('/GET', () => {
   before(done => {

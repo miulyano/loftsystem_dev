@@ -4,8 +4,8 @@
   "description": "loftsystem_dev - graduation project intensive by node.js",
   "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development mongod --config /usr/local/etc/mongod.conf & node_modules/.bin/nodemon ./server/app.js",
-    "start": "NODE_ENV=production node ./server/app.js",
+    "dev": "NODE_ENV=development mongod --config /usr/local/etc/mongod.conf & node_modules/.bin/nodemon app.js",
+    "start": "NODE_ENV=production node app.js",
     "test": "NODE_ENV=production mocha --exit"
   },
   "repository": {
