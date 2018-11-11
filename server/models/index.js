@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-let url = process.env.NODE_ENV === 'production' ? 'mongodb://admin:admin1@ds149672.mlab.com:49672/loftsystem':'mongodb://localhost:27017/loftsystem_test';
+let url = /*process.env.NODE_ENV === 'production' ?*/ 'mongodb://admin:admin1@ds149672.mlab.com:49672/loftsystem'/*:'mongodb://localhost:27017/loftsystem_test'*/;
 
 // connect database
 mongoose.connect(url, { useNewUrlParser: true } );
