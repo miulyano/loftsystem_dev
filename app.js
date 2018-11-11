@@ -19,7 +19,6 @@ app.use(cookieParser());
 
 // start of use STATIC DIR & ROUTES
 app.use(express.static(path.join(__dirname, 'public')));
-console.log(path.join(__dirname, 'public'));
 app.use('/', require('./server/routes/index'));
 
 // error processing
@@ -34,7 +33,7 @@ app.use((err, req, res, next) => {
 
 // SERVER startup
 if (require.main === module) {
-    const server = app.listen(process.env.PORT || 3000, function () {
+    const server = app.listen(process.env.PORT || 3000, '127.0.0.1', function () {
         console.log(`Сервер запущен на порте: ${server.address().port}\nhttp://localhost:${server.address().port}`);
     });
 
