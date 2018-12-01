@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
 
 // SERVER startup
 if (require.main === module) {
-    const server = app.listen(process.env.PORT || 3000, '127.0.0.1', function () {
+    const server = app.listen(process.env.PORT || 3000, function () {
         console.log(`Сервер запущен на порте: ${server.address().port}\nhttp://localhost:${server.address().port}`);
     });
 
