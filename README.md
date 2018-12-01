@@ -44,4 +44,4 @@ $ npm start * for production mode *
 
 ### Technical task
 
-[Here](https://bitbucket.org/krabaton/loft-homework-5)
+[Here](https://bitbucket.org/krabaton/loft-homework-5) 
